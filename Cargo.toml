@@ -41,3 +41,7 @@ name = "save_bridge"
 path = "examples/save_bridge.rs"
 required-features = ["persist"]
 
+[[example]]
+name = "groups"
+path = "examples/get_light_groups.rs"
+

@@ -5,6 +5,7 @@
 use super::{
     helpers::{network::*, *},
     lights::*,
+    groups::*,
 };
 use std::cell::RefCell;
 use std::collections::BTreeMap;
@@ -96,6 +97,13 @@ impl Bridge {
             .borrow()
             .clone()
             .expect("This should always be some since we update before accessing")
+    }
+
+    pub fn get_groups(&self) -> Result<Vec<Group>,()>  {
+        let endpoint = self.get_endpoint("./groups", AllowedMethod::GET);
+        let request = send_request(endpoint, None, &self.client);
+        let response = self.runtime.borrow_mut().block_on(async { request.await?.text().await }).expect("Unable to communicate with the bridge");
+        Group::from_json(response)
     }
 
     /// Sends a state to a given light by its ID on the system.

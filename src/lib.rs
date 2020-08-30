@@ -10,7 +10,7 @@
 //! use lighthouse::bridge::Bridge;
 //! let ip_addr = IpAddr::V4(Ipv4Addr::new(192, 168, 1, 10));
 //! let bridge_token = String::from("my-example-token");
-//! let mut bridge = Bridge::new(ip_addr, bridge_token).unwrap();
+//! let bridge = Bridge::new(ip_addr, bridge_token).unwrap();
 //! let lights = bridge.get_lights();
 //! ```
 //!
@@ -31,3 +31,4 @@ pub mod bridge;
 pub mod color;
 pub mod helpers;
 pub mod lights;
+pub mod groups;
